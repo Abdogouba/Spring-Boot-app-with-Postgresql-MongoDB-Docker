@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+
+  postgres:
+    image: postgres
+    container_name: miniapp_postgres
+    environment:
+      POSTGRES_DB: mini_project_2
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+  mongo:
+    image: mongo
+    container_name: miniapp_mongo
+    ports:
+      - "27017:27017"
+    restart: unless-stopped
+
+  miniapp:
+    build: .
+    container_name: miniapp_backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - mongo
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/mini_project_2
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_DATA_MONGODB_URI: mongodb://mongo:27017/miniapp_mongo
+    restart: unless-stopped
