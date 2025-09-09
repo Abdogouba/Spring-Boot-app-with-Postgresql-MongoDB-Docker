@@ -1,1 +1,1 @@
-This is a ride sharing application backend, I implemented in the Advanced Computer Lab course in the 10th semester of the computer science and engineering major in the german university in cairo GUC, I also uploaded the project description.
+This is a ride sharing application backend (mini project), using java - spring boot - postgresql - mongodb - docker, I implemented in the Advanced Computer Lab course in the 10th semester of the computer science and engineering major in the german university in cairo GUC, I also uploaded the project description.
